@@ -1,36 +1,37 @@
+import { Routes } from "@/app/auth/Routes"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Activity, TrendingUp, LineChart, Zap } from "lucide-react"
+import { Activity, TrendingUp, LineChart, Zap, ArrowRight } from "lucide-react"
 import Link from "next/link"
 
 const tools = [
   {
-    name: "Analysis Tools",
-    description: "Comprehensive data analysis and visualization",
+    name: "Calculo de Vida Util",
+    description: "Calcule a vida util de sua bateria",
     icon: Activity,
-    href: "/dashboard/tools/analysis",
+    href: Routes.tools.lifespan,
     color: "text-blue-500",
   },
-  {
-    name: "Villalva Optimization",
-    description: "Optimize solar panel parameters using Villalva model",
-    icon: TrendingUp,
-    href: "/dashboard/tools/villalva",
-    color: "text-green-500",
-  },
-  {
-    name: "Curve Fit",
-    description: "Fit curves to your measurement data",
-    icon: LineChart,
-    href: "/dashboard/tools/curve-fit",
-    color: "text-purple-500",
-  },
-  {
-    name: "PV Curve Translate",
-    description: "Translate PV curves between different conditions",
-    icon: Zap,
-    href: "/dashboard/tools/pv-curve",
-    color: "text-orange-500",
-  },
+  // {
+  //   name: "Villalva Optimization",
+  //   description: "Optimize solar panel parameters using Villalva model",
+  //   icon: TrendingUp,
+  //   href: "/dashboard/tools/villalva",
+  //   color: "text-green-500",
+  // },
+  // {
+  //   name: "Curve Fit",
+  //   description: "Fit curves to your measurement data",
+  //   icon: LineChart,
+  //   href: "/dashboard/tools/curve-fit",
+  //   color: "text-purple-500",
+  // },
+  // {
+  //   name: "PV Curve Translate",
+  //   description: "Translate PV curves between different conditions",
+  //   icon: Zap,
+  //   href: "/dashboard/tools/pv-curve",
+  //   color: "text-orange-500",
+  // },
 ]
 
 export default function ToolsPage() {
@@ -54,8 +55,9 @@ export default function ToolsPage() {
                 </CardTitle>
                 <CardDescription>{tool.description}</CardDescription>
               </CardHeader>
-              <CardContent>
-                <p className="text-sm text-muted-foreground">Click to access tool →</p>
+              <CardContent className="flex items-center gap-2">
+                <p className="text-sm text-muted-foreground">Acesse a ferramenta</p>
+                <ArrowRight className="h-4 w-4 text-muted-foreground" />
               </CardContent>
             </Card>
           </Link>

@@ -7,17 +7,18 @@ import { Home, Database, Smartphone, Wrench, Activity, TrendingUp, LineChart, Za
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { useSidebar } from "@/lib/contexts/sidebar-context"
+import { Routes } from "@/app/auth/Routes"
 
 const navigation = [
-  { name: "Home", href: "/dashboard", icon: Home },
-  { name: "Dimensionamentos", href: "/dashboard/baterySizing", icon: BatteryCharging },
+  { name: "Home", href: Routes.home, icon: Home },
+  { name: "Dimensionamentos", href: Routes.batertSizing.root, icon: BatteryCharging },
   // { name: "Devices", href: "/dashboard/devices", icon: Smartphone },
   {
     name: "Ferramentas",
-    href: "/dashboard/tools",
+    href: Routes.tools.root,
     icon: Wrench,
     children: [
-      { name: "Calculo de Vida Util", href: "/dashboard/tools/analysis", icon: Activity },
+      { name: "Calculo de Vida Util", href: Routes.tools.lifespan, icon: Activity },
       // { name: "Villalva Optimization", href: "/dashboard/tools/villalva", icon: TrendingUp },
       // { name: "Curve Fit", href: "/dashboard/tools/curve-fit", icon: LineChart },
       // { name: "PV Curve Translate", href: "/dashboard/tools/pv-curve", icon: Zap },

@@ -1,6 +1,9 @@
+"use client"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Plus, FileText, Calendar, Download } from "lucide-react"
+import { useRouter } from "next/navigation"
+import { Routes } from "@/app/auth/Routes"
 
 const sizing = [
   {
@@ -27,6 +30,9 @@ const sizing = [
 ]
 
 export default function BaterySizingPage() {
+
+  const { push } = useRouter()
+
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
@@ -34,7 +40,8 @@ export default function BaterySizingPage() {
           <h1 className="text-3xl font-bold tracking-tight">Dimensionamentos</h1>
           <p className="text-muted-foreground">Gerencie e analise seus dimensionamentos de baterias</p>
         </div>
-        <Button variant="secondary" className="cursor-pointer">
+        <Button variant="secondary" className="cursor-pointer"
+        onClick={() => push(Routes.batertSizing.form)}>
           <Plus className="h-4 w-4" />
           Novo Dimensionamento
         </Button>
