@@ -1,6 +1,10 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+button{
+  cursor: pointer;
+}
+
 :root {
   /* Light theme colors */
   --background: oklch(0.97 0.01 120); /* #edf1db - light greenish */

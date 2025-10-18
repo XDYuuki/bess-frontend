@@ -5,23 +5,15 @@ import { type BatterySizingFormData } from "@/lib/schemas/battery"
 import { defaultBatteryData } from "@/lib/types/battery"
 import { BatterySizingForm } from "@/components/dashboard/forms/baterySizingForm"
 import { useParams } from "next/navigation"
+import PeakShavingForm from "@/components/dashboard/forms/peakShavingForm"
 
-export default function BatterySizingPage() {
+export default function PeakShavingPage() {
   const [isLoading, setIsLoading] = useState(false)
   const [savedData, setSavedData] = useState<BatterySizingFormData | null>(null)
 
   const { baterySizingId } = useParams<{ baterySizingId: string }>()
 
   // Dados padrão que podem ser carregados
-  const defaultData = {
-    ...defaultBatteryData,
-    partNumber: "BAT-001",
-    internalResistance: 0.15,
-    cn: 200,
-    crRate: 0.8,
-    batteryType: "LiFePO4" as const,
-    chemistry: "Lithium" as const,
-  }
 
   const handleSubmit = async (data: BatterySizingFormData) => {
     setIsLoading(true)
@@ -39,16 +31,15 @@ export default function BatterySizingPage() {
 
   return (
     <div className="space-y-6">
-      {/* <div className="text-center">
-        <h2 className="text-2xl font-bold">Exemplo de Uso do Formulário</h2>
+      <div className="text-center">
+        <h2 className="text-2xl font-bold">Calculo de Peak Shaving</h2>
         <p className="text-muted-foreground">
-          Formulário de dimensionamento de bateria com dados pré-carregados
+          Formulário de cálculo de Peak Shaving
         </p>
-      </div> */}
+      </div>
 
-      <BatterySizingForm
-        defaultData={defaultData}
-        onSubmit={handleSubmit}
+      <PeakShavingForm
+        onSubmit={() => {}}
         isLoading={isLoading}
       />
 

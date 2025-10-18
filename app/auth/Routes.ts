@@ -14,6 +14,7 @@ export const RoutesReliaBESS = {
 	tools: {
 		root: '/dashboard/tools',
         lifespan: '/dashboard/tools/lifespan',
+        peakShaving: '/dashboard/tools/peak-shaving',
 	},
 }
 
