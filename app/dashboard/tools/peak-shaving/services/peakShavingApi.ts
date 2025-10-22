@@ -21,4 +21,9 @@ const createPeakShaving = async (data: ICreatePeakShavingRequest): Promise<IPeak
 	return response.data;
 }
 
-export { getPeakShaving, createPeakShaving };
+const getPeakShavingById = async (peakShavingId: string): Promise<IPeakShaving> => {
+	const response = await BaseApi.get(`${baseUrl}/${peakShavingId}`);
+	return response.data;
+}
+
+export { getPeakShaving, createPeakShaving, getPeakShavingById };

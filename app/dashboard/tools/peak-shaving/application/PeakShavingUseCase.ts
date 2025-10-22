@@ -1,5 +1,5 @@
 import { PeakShavingFormData } from "@/lib/schemas/peakShaving";
-import { createPeakShaving, getPeakShaving } from "../services/peakShavingApi";
+import { createPeakShaving, getPeakShaving, getPeakShavingById } from "../services/peakShavingApi";
 import { ICreatePeakShavingRequest, IPeakShaving } from "../types/peakShavingTypes";
 import { timeStringToISODateTime } from "../utils/formUtils";
 
@@ -22,5 +22,10 @@ export const CreatePeakShavingUseCase = async (data: PeakShavingFormData): Promi
     };
     
     const peakShaving = await createPeakShaving(apiData);
+    return peakShaving;
+}
+
+export const GetPeakShavingUseCaseById = async (peakShavingId: string): Promise<IPeakShaving> => {
+    const peakShaving = await getPeakShavingById(peakShavingId);
     return peakShaving;
 }
