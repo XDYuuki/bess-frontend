@@ -6,7 +6,7 @@ import { defaultBatteryData } from "@/lib/types/battery"
 import { BatterySizingForm } from "@/components/dashboard/forms/baterySizingForm"
 import { useParams } from "next/navigation"
 
-export default function BatterySizingExamplePage() {
+export default function BatterySizingPage() {
   const [isLoading, setIsLoading] = useState(false)
   const [savedData, setSavedData] = useState<BatterySizingFormData | null>(null)
 

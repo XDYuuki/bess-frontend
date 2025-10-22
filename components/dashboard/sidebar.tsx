@@ -3,7 +3,7 @@
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { cn } from "@/lib/utils"
-import { Home, Database, Smartphone, Wrench, Activity, TrendingUp, LineChart, Zap, ChevronRight, BatteryCharging, X } from "lucide-react"
+import { Home, Database, Smartphone, Wrench, Activity, TrendingUp, LineChart, Zap, ChevronRight, BatteryCharging, X, BatteryWarning } from "lucide-react"
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { useSidebar } from "@/lib/contexts/sidebar-context"
@@ -18,7 +18,8 @@ const navigation = [
     href: Routes.tools.root,
     icon: Wrench,
     children: [
-      { name: "Calculo de Vida Util", href: Routes.tools.lifespan, icon: Activity },
+      { name: "Calculo de Vida Util", href: Routes.tools.lifespan, icon: BatteryWarning },
+      { name: "Calculo de Peak Shaving", href: Routes.tools.peakShaving, icon: Activity },
       // { name: "Villalva Optimization", href: "/dashboard/tools/villalva", icon: TrendingUp },
       // { name: "Curve Fit", href: "/dashboard/tools/curve-fit", icon: LineChart },
       // { name: "PV Curve Translate", href: "/dashboard/tools/pv-curve", icon: Zap },
