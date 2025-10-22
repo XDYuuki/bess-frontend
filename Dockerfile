@@ -5,7 +5,7 @@ WORKDIR /app
 
 # Copy package files
 COPY package.json ./
-RUN npm install --only=production
+RUN npm install --only=production --legacy-peer-deps
 
 # Stage 2: Builder
 FROM node:22-alpine AS builder
@@ -14,7 +14,7 @@ WORKDIR /app
 
 # Copy package files
 COPY package.json ./
-RUN npm install
+RUN npm install --legacy-peer-deps
 
 # Copy source code
 COPY . .
