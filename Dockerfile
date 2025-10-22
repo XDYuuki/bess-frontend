@@ -3,21 +3,20 @@ FROM node:22-alpine AS deps
 RUN apk update && apk upgrade && apk add --no-cache libc6-compat
 WORKDIR /app
 
-RUN corepack enable && corepack prepare yarn@stable --activate
-
 # Copy package files
-COPY package.json yarn.lock* ./
-RUN yarn install --frozen-lockfile
+COPY package.json package-lock.json* ./
+RUN npm ci --only=production
 
 # Stage 2: Builder
 FROM node:22-alpine AS builder
 RUN apk update && apk upgrade
 WORKDIR /app
 
-RUN corepack enable && corepack prepare yarn@stable --activate
+# Copy package files
+COPY package.json package-lock.json* ./
+RUN npm ci
 
-# Copy dependencies from deps stage
-COPY --from=deps /app/node_modules ./node_modules
+# Copy source code
 COPY . .
 
 # Set environment variables for build
@@ -25,7 +24,7 @@ ENV NEXT_TELEMETRY_DISABLED=1
 ENV NODE_ENV=production
 
 # Build the application
-RUN yarn build
+RUN npm run build
 
 # Stage 3: Runner
 FROM node:22-alpine AS runner
