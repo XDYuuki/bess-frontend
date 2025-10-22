@@ -4,8 +4,8 @@ RUN apk update && apk upgrade && apk add --no-cache libc6-compat
 WORKDIR /app
 
 # Copy package files
-COPY package.json package-lock.json* ./
-RUN npm ci --only=production
+COPY package.json ./
+RUN npm install --only=production
 
 # Stage 2: Builder
 FROM node:22-alpine AS builder
@@ -13,8 +13,8 @@ RUN apk update && apk upgrade
 WORKDIR /app
 
 # Copy package files
-COPY package.json package-lock.json* ./
-RUN npm ci
+COPY package.json ./
+RUN npm install
 
 # Copy source code
 COPY . .
