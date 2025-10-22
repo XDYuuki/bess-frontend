@@ -4,29 +4,35 @@ import { useState } from "react"
 import { type BatterySizingFormData } from "@/lib/schemas/battery"
 import { defaultBatteryData } from "@/lib/types/battery"
 import { BatterySizingForm } from "@/components/dashboard/forms/baterySizingForm"
-import { useParams } from "next/navigation"
+import { useParams, useRouter } from "next/navigation"
 import PeakShavingForm from "@/components/dashboard/forms/peakShavingForm"
+import { ICreatePeakShavingRequest } from "../types/peakShavingTypes"
+import { CreatePeakShavingUseCase } from "../application/PeakShavingUseCase"
+import { Routes } from "@/app/auth/Routes"
+import { PeakShavingFormData } from "@/lib/schemas/peakShaving"
 
 export default function PeakShavingPage() {
   const [isLoading, setIsLoading] = useState(false)
-  const [savedData, setSavedData] = useState<BatterySizingFormData | null>(null)
+  const [savedData, setSavedData] = useState<PeakShavingFormData | null>(null)
+  const { push } = useRouter();
 
   const { baterySizingId } = useParams<{ baterySizingId: string }>()
 
   // Dados padrão que podem ser carregados
 
-  const handleSubmit = async (data: BatterySizingFormData) => {
+  const handleSubmit = async (data: PeakShavingFormData) => {
     setIsLoading(true)
     
-    // Simular processamento
-    await new Promise(resolve => setTimeout(resolve, 2000))
-    
-    console.log("Dados do formulário:", data)
-    setSavedData(data)
+    try {
+      console.log("Dados do formulário:", data)
+      const response = await CreatePeakShavingUseCase(data);
+      console.log("Resposta da API:", response)
+      push(Routes.tools.peakShaving);
+      setSavedData(data);
+    } catch (error) {
+      console.error(error);
+    }
     setIsLoading(false)
-    
-    // Aqui você pode enviar os dados para uma API
-    // await api.saveBatteryConfiguration(data)
   }
 
   return (
@@ -39,7 +45,7 @@ export default function PeakShavingPage() {
       </div>
 
       <PeakShavingForm
-        onSubmit={() => {}}
+        onSubmit={handleSubmit}
         isLoading={isLoading}
       />
 
