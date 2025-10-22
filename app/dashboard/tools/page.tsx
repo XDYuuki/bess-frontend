@@ -5,8 +5,8 @@ import Link from "next/link"
 
 const tools = [
   {
-    name: "Calculo de Vida Util",
-    description: "Calcule a vida util de sua bateria",
+    name: "Calculo de Vida Útil",
+    description: "Calcule a vida útil de sua bateria",
     icon: Activity,
     href: Routes.tools.lifespan,
     color: "text-blue-500",

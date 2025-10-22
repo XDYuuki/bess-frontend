@@ -7,7 +7,7 @@ export default function DashboardPage() {
     <div className="space-y-6">
       <div className="flex flex-row">
         <div>
-          <h1 className="text-3xl font-bold tracking-tight">Bem vindo ai ReliaBESS</h1>
+          <h1 className="text-3xl font-bold tracking-tight">Bem vindo ao ReliaBESS</h1>
           <p className="text-muted-foreground">Gerencie seus dimensionamentos de baterias aqui.</p>
         </div>
 
@@ -31,7 +31,7 @@ export default function DashboardPage() {
 
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Calculos de Vida Util</CardTitle>
+            <CardTitle className="text-sm font-medium">Calculos de Vida Útil</CardTitle>
             <BatteryWarning className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
@@ -119,8 +119,8 @@ export default function DashboardPage() {
               <button className="flex w-full items-center gap-3 rounded-lg border cursor-pointer p-3 text-left transition-colors hover:bg-accent">
                 <BatteryWarning className="h-5 w-5 text-primary" />
                 <div>
-                  <p className="text-sm font-medium">Calculo de Vida Util</p>
-                  <p className="text-xs text-muted-foreground">Calcule a vida util de sua bateria</p>
+                  <p className="text-sm font-medium">Calculo de Vida Útil</p>
+                  <p className="text-xs text-muted-foreground">Calcule a vida útil de sua bateria</p>
                 </div>
               </button>
               <button className="flex w-full items-center gap-3 rounded-lg border cursor-pointer p-3 text-left transition-colors hover:bg-accent">

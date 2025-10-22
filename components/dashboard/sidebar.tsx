@@ -18,7 +18,7 @@ const navigation = [
     href: Routes.tools.root,
     icon: Wrench,
     children: [
-      { name: "Calculo de Vida Util", href: Routes.tools.lifespan, icon: BatteryWarning },
+      { name: "Calculo de Vida Útil", href: Routes.tools.lifespan, icon: BatteryWarning },
       { name: "Calculo de Peak Shaving", href: Routes.tools.peakShaving, icon: Activity },
       // { name: "Villalva Optimization", href: "/dashboard/tools/villalva", icon: TrendingUp },
       // { name: "Curve Fit", href: "/dashboard/tools/curve-fit", icon: LineChart },
