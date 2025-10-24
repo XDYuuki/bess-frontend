@@ -55,11 +55,9 @@ export default function PickShavingFragmentPage() {
 									<div className="">
 										<div className="p-1 border border-primary rounded-md">
 											{peakShaving
-												? (
-														peakShaving.max_daily_energy /
-														1000
-												  ).toFixed(5)
-												: 0}
+												? peakShaving.max_daily_energy.toFixed(2)
+												: 0
+											}
 										</div>
 									</div>
 								</div>
@@ -71,11 +69,9 @@ export default function PickShavingFragmentPage() {
 									<div className="">
 										<div className="p-1 border border-primary rounded-md">
 											{peakShaving
-												? (
-														peakShaving.min_daily_energy /
-														1000
-												  ).toFixed(5)
-												: 0}
+												? peakShaving.min_daily_energy.toFixed(2)
+												: 0
+											}
 										</div>
 									</div>
 								</div>
@@ -87,11 +83,9 @@ export default function PickShavingFragmentPage() {
 									<div className="">
 										<div className="p-1 border border-primary rounded-md">
 											{peakShaving
-												? (
-														peakShaving.max_daily_power /
-														1000
-												  ).toFixed(5)
-												: 0}
+												? peakShaving.max_daily_power.toFixed(2)
+												: 0
+											}
 										</div>
 									</div>
 								</div>
@@ -103,11 +97,9 @@ export default function PickShavingFragmentPage() {
 									<div className="">
 										<div className="p-1 border border-primary rounded-md">
 											{peakShaving
-												? (
-														peakShaving.min_daily_power /
-														1000
-												  ).toFixed(5)
-												: 0}
+												? peakShaving.min_daily_power.toFixed(2)
+												: 0
+											}
 										</div>
 									</div>
 								</div>
@@ -121,11 +113,9 @@ export default function PickShavingFragmentPage() {
 									<div className="">
 										<div className="p-1 border border-primary rounded-md">
 											{peakShaving
-												? (
-														peakShaving.energy_average /
-														1000
-												  ).toFixed(5)
-												: 0}
+												? peakShaving.energy_average.toFixed(2)
+												: 0
+											}
 										</div>
 									</div>
 								</div>
@@ -137,11 +127,9 @@ export default function PickShavingFragmentPage() {
 									<div className="">
 										<div className="p-1 border border-primary rounded-md">
 											{peakShaving
-												? (
-														peakShaving.power_average /
-														1000
-												  ).toFixed(5)
-												: 0}
+												? peakShaving.power_average.toFixed(2)
+												: 0
+											}
 										</div>
 									</div>
 								</div>
@@ -155,7 +143,7 @@ export default function PickShavingFragmentPage() {
 				title="Histograma de Energia Diária"
 				description="Valores de energia diária"
 				xAxisLabel="Dia"
-				yAxisLabel="Energia diária [Wh]"
+				yAxisLabel="Energia diária [kWh]"
 				showGrid={true}
 				height={400}
 				data={peakShaving?.daily_energie_list || []}
@@ -166,7 +154,7 @@ export default function PickShavingFragmentPage() {
 				title="Histograma de Potência Máxima Diária"
 				description="Valores de potência máxima diária"
 				xAxisLabel="Dia"
-				yAxisLabel="Ptência Máxima diária[W]"
+				yAxisLabel="Ptência Máxima diária[kW]"
 				showGrid={true}
 				height={400}
 				data={peakShaving?.max_daily_power_list || []}
