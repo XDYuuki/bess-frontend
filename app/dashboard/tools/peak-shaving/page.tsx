@@ -58,28 +58,28 @@ export default function PickShavingPage() {
                     <div className="flex flex-col lg:flex-row gap-2 lg:items-center">
                       <h3 className="font-medium">Energia Máxima Diária [kw/h]: </h3>
                       <div className="lg:ml-auto">
-                        <div className="p-1 border border-primary rounded-md">{(item.max_daily_energy/1000).toFixed(5)}</div>
+                        <div className="p-1 border border-primary rounded-md">{(item.max_daily_energy).toFixed(2)}</div>
                       </div>
                     </div>
 
                     <div className="flex flex-col lg:flex-row gap-2 lg:items-center">
                       <h3 className="font-medium">Energia Mínima Diária [kw/h]: </h3>                    
                       <div className="lg:ml-auto">
-                        <div className="p-1 border border-primary rounded-md">{(item.min_daily_energy/1000).toFixed(5)}</div>
+                        <div className="p-1 border border-primary rounded-md">{(item.min_daily_energy).toFixed(2)}</div>
                       </div>
                     </div>
 
                     <div className="flex flex-col lg:flex-row gap-2 lg:items-center">
                       <h3 className="font-medium">Potência Máxima Diária [kw]: </h3>
                       <div className="lg:ml-auto">
-                        <div className="p-1 border border-primary rounded-md">{(item.max_daily_power/1000).toFixed(5)}</div>
+                        <div className="p-1 border border-primary rounded-md">{(item.max_daily_power).toFixed(2)}</div>
                       </div>
                     </div>
 
                     <div className="flex flex-col lg:flex-row gap-2 lg:items-center">
                       <h3 className="font-medium">Potência Mínima Diária [kw]: </h3>                    
                       <div className="lg:ml-auto">
-                        <div className="p-1 border border-primary rounded-md">{(item.min_daily_power/1000).toFixed(5)}</div>
+                        <div className="p-1 border border-primary rounded-md">{(item.min_daily_power).toFixed(2)}</div>
                       </div>
                     </div>
                   </div>

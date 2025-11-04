@@ -13,7 +13,7 @@ import {
 } from "recharts"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 
-interface HistogramProps {
+interface BarGraphProps {
   data: number[]
   averageValue: number
   title?: string
@@ -22,24 +22,27 @@ interface HistogramProps {
   yAxisLabel?: string
   showGrid?: boolean
   height?: number
+  labels?: string[] // Labels customizados para o eixo X (para histogramas)
 }
 
-export function Histogram({
+export function BarGraph({
   data,
   averageValue,
-  title = "Histogram",
+  title = "BarGraph",
   description,
   xAxisLabel = "Index",
   yAxisLabel = "Value",
   showGrid = true,
   height = 400,
-}: HistogramProps) {
+  labels,
+}: BarGraphProps) {
   const chartData = useMemo(() => {
     return data.map((value, index) => ({
       index: index + 1,
+      label: labels && labels[index] ? labels[index] : `${index + 1}`,
       value: value,
     }))
-  }, [data])
+  }, [data, labels])
 
   const maxValue = useMemo(() => Math.max(...data, averageValue), [data, averageValue])
   const minValue = useMemo(() => Math.min(...data, averageValue), [data, averageValue])
@@ -58,12 +61,12 @@ export function Histogram({
               top: 20,
               right: 30,
               left: 20,
-              bottom: 20,
+              bottom: labels ? 60 : 20,
             }}
           >
             {showGrid && <CartesianGrid strokeDasharray="3 3" className="stroke-muted" />}
             <XAxis
-              dataKey="index"
+              dataKey={labels ? "label" : "index"}
               label={{
                 value: xAxisLabel,
                 position: "insideBottom",
@@ -72,6 +75,9 @@ export function Histogram({
               }}
               className="text-xs fill-muted-foreground"
               tick={{ fill: "hsl(var(--muted-foreground))" }}
+              angle={labels ? -45 : 0}
+              textAnchor={labels ? "end" : "middle"}
+              height={labels ? 80 : 30}
             />
             <YAxis
               label={{

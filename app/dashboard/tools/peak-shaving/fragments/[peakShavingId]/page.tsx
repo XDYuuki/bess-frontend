@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import { GetPeakShavingUseCaseById } from "../../application/PeakShavingUseCase";
 import { IPeakShaving } from "../../types/peakShavingTypes";
-import { Histogram } from "@/components/histogram";
+import { BarGraph } from "@/components/barGraph";
 import { useParams } from "next/navigation";
 import {
 	Card,
@@ -12,6 +12,19 @@ import {
 	CardTitle,
 } from "@/components/ui/card";
 import { FileText } from "lucide-react";
+import Histogram from "../../components/Histogram";
+
+// Intervalos para o histograma de energia diária
+// Baseado na faixa: mínimo ~1694 kWh, máximo ~7621 kWh
+const ENERGY_INTERVALS = [
+	{ min: 1500, max: 2500 },
+	{ min: 2500, max: 3500 },
+	{ min: 3500, max: 4500 },
+	{ min: 4500, max: 5500 },
+	{ min: 5500, max: 6500 },
+	{ min: 6500, max: 7500 },
+	{ min: 7500, max: 7700 },
+];
 
 export default function PickShavingFragmentPage() {
 	const { peakShavingId } = useParams<{ peakShavingId: string }>();
@@ -140,7 +153,19 @@ export default function PickShavingFragmentPage() {
 			</div>
 
 			<Histogram
+				data={peakShaving?.daily_energie_list || []}
 				title="Histograma de Energia Diária"
+				description="Distribuição de energia diária por intervalos"
+				xAxisLabel="Intervalos de Energia [kWh]"
+				yAxisLabel="Frequência"
+				showGrid={true}
+				height={400}
+				averageValue={peakShaving?.energy_average || 0}
+				intervals={ENERGY_INTERVALS}
+			/>
+
+			<BarGraph
+				title="Grafico de Energia Diária"
 				description="Valores de energia diária"
 				xAxisLabel="Dia"
 				yAxisLabel="Energia diária [kWh]"
@@ -150,8 +175,8 @@ export default function PickShavingFragmentPage() {
 				averageValue={peakShaving?.energy_average || 0}
 			/>
 
-			<Histogram
-				title="Histograma de Potência Máxima Diária"
+			<BarGraph
+				title="Gráfico de Potência Máxima Diária"
 				description="Valores de potência máxima diária"
 				xAxisLabel="Dia"
 				yAxisLabel="Ptência Máxima diária[kW]"
